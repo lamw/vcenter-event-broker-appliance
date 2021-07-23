@@ -126,7 +126,7 @@ else
 	echo -e "\e[92mCustomization Completed ..." > /dev/console
 
 	# Clear guestinfo.ovfEnv
-	vmtoolsd --cmd "info-set guestinfo.ovfEnv NULL"
+	#vmtoolsd --cmd "info-set guestinfo.ovfEnv NULL"
 
 	# Ensure we don't run customization again
 	touch /root/ran_customization

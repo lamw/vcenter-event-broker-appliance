@@ -47,9 +47,9 @@ EOF
 
 kubectl apply -f /root/config/veba-ui-rbac.yaml
 
-ESCAPED_VCENTER_SERVER=$(echo -n ${VCENTER_SERVER} | python -c 'import sys,json;data=sys.stdin.read(); print json.dumps(data)[1:-1]')
-ESCAPED_VCENTER_USERNAME_FOR_VEBA_UI=$(echo -n ${VCENTER_USERNAME_FOR_VEBA_UI} | python -c 'import sys,json;data=sys.stdin.read(); print json.dumps(data)[1:-1]')
-ESCAPED_VCENTER_PASSWORD_FOR_VEBA_UI=$(echo -n ${VCENTER_PASSWORD_FOR_VEBA_UI} | python -c 'import sys,json;data=sys.stdin.read(); print json.dumps(data)[1:-1]')
+ESCAPED_VCENTER_SERVER=$(echo -n ${VCENTER_SERVER} | python -c 'import sys,json;data=sys.stdin.read(); print(json.dumps(data)[1:-1])')
+ESCAPED_VCENTER_USERNAME_FOR_VEBA_UI=$(echo -n ${VCENTER_USERNAME_FOR_VEBA_UI} | python -c 'import sys,json;data=sys.stdin.read(); print(json.dumps(data)[1:-1])')
+ESCAPED_VCENTER_PASSWORD_FOR_VEBA_UI=$(echo -n ${VCENTER_PASSWORD_FOR_VEBA_UI} | python -c 'import sys,json;data=sys.stdin.read(); print(json.dumps(data)[1:-1])')
 
 echo -e "\e[92mSetting up VEBA UI Secret ..." > /dev/console
 kubectl -n vmware-system create secret generic veba-ui-secret \

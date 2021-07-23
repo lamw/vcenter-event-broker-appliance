@@ -17,10 +17,10 @@
         }]
     },
     "antrea": {
-        "gitRepoTag": "v0.6.0",
+        "gitRepoTag": "v1.2.0",
         "containers": [{
-            "name": "antrea/antrea-ubuntu",
-            "version": "v0.6.0"
+            "name": "projects.registry.vmware.com/antrea/antrea-ubuntu",
+            "version": "v1.2.0"
         }]
     },
     "contour": {
@@ -49,34 +49,34 @@
             }]
     },
     "kubernetes": {
-        "gitRepoTag": "v1.20.2",
+        "gitRepoTag": "v1.21.3",
         "containers": [{
                 "name": "k8s.gcr.io/kube-apiserver",
-                "version": "v1.20.2"
+                "version": "v1.21.3"
             },
             {
                 "name": "k8s.gcr.io/kube-controller-manager",
-                "version": "v1.20.2"
+                "version": "v1.21.3"
             },
             {
                 "name": "k8s.gcr.io/kube-scheduler",
-                "version": "v1.20.2"
+                "version": "v1.21.3"
             },
             {
                 "name": "k8s.gcr.io/kube-proxy",
-                "version": "v1.20.2"
+                "version": "v1.21.3"
             },
             {
                 "name": "k8s.gcr.io/pause",
-                "version": "3.2"
+                "version": "3.4.1"
             },
             {
                 "name": "k8s.gcr.io/etcd",
                 "version": "3.4.13-0"
             },
             {
-                "name": "k8s.gcr.io/coredns",
-                "version": "1.7.0"
+                "name": "k8s.gcr.io/coredns/coredns",
+                "version": "v1.8.0"
             }
         ]
     },
@@ -220,5 +220,8 @@
             "name": "docker.io/n3wscott/sockeye:v0.7.0@sha256",
             "version": "e603d8494eeacce966e57f8f508e4c4f6bebc71d095e3f5a0a1abaf42c5f0e48"
         }]
+    },
+    "containerd": {
+        "version": "1.5.4"
     }
 }

@@ -14,10 +14,10 @@ kubectl -n vmware-system create secret generic basic-auth \
 EVENT_ROUTER_CONFIG=/root/config/event-router-config.yaml
 
 # Slicing of escaped variables needed to properly handle the double quotation issue with constructing vCenter Server URL
-ESCAPED_VCENTER_SERVER=$(echo -n ${VCENTER_SERVER} | python -c 'import sys,json;data=sys.stdin.read(); print json.dumps(data)[1:-1]')
-ESCAPED_VCENTER_USERNAME=$(echo -n ${VCENTER_USERNAME} | python -c 'import sys,json;data=sys.stdin.read(); print json.dumps(data)')
-ESCAPED_VCENTER_PASSWORD=$(echo -n ${VCENTER_PASSWORD} | python -c 'import sys,json;data=sys.stdin.read(); print json.dumps(data)')
-ESCAPED_ROOT_PASSWORD=$(echo -n ${ROOT_PASSWORD} | python -c 'import sys,json;data=sys.stdin.read(); print json.dumps(data)')
+ESCAPED_VCENTER_SERVER=$(echo -n ${VCENTER_SERVER} | python -c 'import sys,json;data=sys.stdin.read(); print(json.dumps(data)[1:-1])')
+ESCAPED_VCENTER_USERNAME=$(echo -n ${VCENTER_USERNAME} | python -c 'import sys,json;data=sys.stdin.read(); print(json.dumps(data))')
+ESCAPED_VCENTER_PASSWORD=$(echo -n ${VCENTER_PASSWORD} | python -c 'import sys,json;data=sys.stdin.read(); print(json.dumps(data))')
+ESCAPED_ROOT_PASSWORD=$(echo -n ${ROOT_PASSWORD} | python -c 'import sys,json;data=sys.stdin.read(); print(json.dumps(data))')
 
 if [ "${EVENT_PROCESSOR_TYPE}" == "Knative" ]; then
     echo -e "\e[92mSetting up Knative Processor ..." > /dev/console
@@ -100,10 +100,10 @@ echo "Processor: Knative" >> /etc/veba-release
 elif [ "${EVENT_PROCESSOR_TYPE}" == "AWS EventBridge" ]; then
     echo -e "\e[92mSetting up AWS Event Bridge Processor ..." > /dev/console
 
-	ESCAPED_AWS_EVENTBRIDGE_ACCESS_KEY=$(echo -n ${AWS_EVENTBRIDGE_ACCESS_KEY} | python -c 'import sys,json;data=sys.stdin.read(); print json.dumps(data)')
-	ESCAPED_AWS_EVENTBRIDGE_ACCESS_SECRET=$(echo -n ${AWS_EVENTBRIDGE_ACCESS_SECRET} | python -c 'import sys,json;data=sys.stdin.read(); print json.dumps(data)')
-	ESCAPED_AWS_EVENTBRIDGE_EVENT_BUS=$(echo -n ${AWS_EVENTBRIDGE_EVENT_BUS} | python -c 'import sys,json;data=sys.stdin.read(); print json.dumps(data)')
-	ESCAPED_AWS_EVENTBRIDGE_RULE_ARN=$(echo -n ${AWS_EVENTBRIDGE_RULE_ARN} | python -c 'import sys,json;data=sys.stdin.read(); print json.dumps(data)')
+	ESCAPED_AWS_EVENTBRIDGE_ACCESS_KEY=$(echo -n ${AWS_EVENTBRIDGE_ACCESS_KEY} | python -c 'import sys,json;data=sys.stdin.read(); print(json.dumps(data))')
+	ESCAPED_AWS_EVENTBRIDGE_ACCESS_SECRET=$(echo -n ${AWS_EVENTBRIDGE_ACCESS_SECRET} | python -c 'import sys,json;data=sys.stdin.read(); print(json.dumps(data))')
+	ESCAPED_AWS_EVENTBRIDGE_EVENT_BUS=$(echo -n ${AWS_EVENTBRIDGE_EVENT_BUS} | python -c 'import sys,json;data=sys.stdin.read(); print(json.dumps(data))')
+	ESCAPED_AWS_EVENTBRIDGE_RULE_ARN=$(echo -n ${AWS_EVENTBRIDGE_RULE_ARN} | python -c 'import sys,json;data=sys.stdin.read(); print(json.dumps(data))')
 
     cat > ${EVENT_ROUTER_CONFIG} << __AWS_EVENTBRIDGE_PROCESSOR__
 apiVersion: event-router.vmware.com/v1alpha1
@@ -155,7 +155,7 @@ else
 
     kubectl apply -f /root/download/faas-netes/yaml
 
-	ESCAPED_OPENFAAS_PASSWORD=$(echo -n ${OPENFAAS_PASSWORD} | python -c 'import sys,json;data=sys.stdin.read(); print json.dumps(data)')
+	ESCAPED_OPENFAAS_PASSWORD=$(echo -n ${OPENFAAS_PASSWORD} | python -c 'import sys,json;data=sys.stdin.read(); print(json.dumps(data))')
 
     cat > ${EVENT_ROUTER_CONFIG} << __OPENFAAS_PROCESSOR__
 apiVersion: event-router.vmware.com/v1alpha1

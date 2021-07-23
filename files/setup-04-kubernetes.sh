@@ -9,9 +9,9 @@ set -euo pipefail
 VEBA_BOM_FILE=/root/config/veba-bom.json
 
 echo -e "\e[92mStarting Docker ..." > /dev/console
-systemctl daemon-reload
-systemctl start docker.service
-systemctl enable docker.service
+#systemctl daemon-reload
+#systemctl start docker.service
+#systemctl enable docker.service
 
 echo -e "\e[92mDisabling/Stopping IP Tables  ..." > /dev/console
 systemctl stop iptables
@@ -27,13 +27,14 @@ echo -e "\e[92mSetting up k8s ..." > /dev/console
 K8S_VERSION=$(jq -r < ${VEBA_BOM_FILE} '.["kubernetes"].gitRepoTag')
 cat > /root/config/kubeconfig.yml << __EOF__
 apiVersion: kubeadm.k8s.io/v1beta2
-kind: InitConfiguration
----
-apiVersion: kubeadm.k8s.io/v1beta2
 kind: ClusterConfiguration
 kubernetesVersion: ${K8S_VERSION}
 networking:
   podSubnet: ${POD_NETWORK_CIDR}
+---
+kind: KubeletConfiguration
+apiVersion: kubelet.config.k8s.io/v1beta1
+cgroupDriver: system
 __EOF__
 
 echo -e "\e[92mDeloying kubeadm ..." > /dev/console
