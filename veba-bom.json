@@ -80,47 +80,71 @@
             }
         ]
     },
-    "knative": {
-        "gitRepoTag": "v0.20.0",
+    "knative-serving": {
+        "gitRepoTag": "v0.24.0",
         "containers": [{
-                "name": "gcr.io/knative-releases/github.com/projectcontour/contour/cmd/contour@sha256",
-                "version": "3e88236949d49b0933318ef077741e9bf6f40ae84e8b79d7c229e1aaff53220f"
-            },
-            {
-                "name": "envoyproxy/envoy",
-                "version": "v1.16.0"
-            },
-            {
-                "name": "gcr.io/knative-releases/knative.dev/net-contour/cmd/controller@sha256",
-                "version": "5654ef5be4f506909bba6cbb59e7049d6c4bfc866066f2546bcabd2ff547307f"
-            },
-            {
                 "name": "gcr.io/knative-releases/knative.dev/serving/cmd/activator@sha256",
-                "version": "cbeb1cdcdde8b3b44bc5eb1c5a07512a36f4bd7fbee5e9677e8789ee2459b6ed"
+                "version": "bd48057f8d6e5f95f389225979c89d2d99d52a4876d2342fc033c909096d4698"
             },
             {
                 "name": "gcr.io/knative-releases/knative.dev/serving/cmd/autoscaler@sha256",
-                "version": "73d4d0503544ea930caa4fba07b701147339131de31a6aae8c52d6bb568f3c81"
+                "version": "d3d6f5ecfff577a6d4d5a0549379fa1acf1d66d7422a58b1756e40eba555285c"
             },
             {
                 "name": "gcr.io/knative-releases/knative.dev/serving/cmd/controller@sha256",
-                "version": "3054c326df9de07a2a1ce34a2515339201706995a16f8efc8228295a6b94fbdd"
+                "version": "e9b9cc7a2a091194161a7a256d6fc342317080f1a31e1f1a33993a5e1993fdb5"
             },
             {
                 "name": "gcr.io/knative-releases/knative.dev/serving/cmd/webhook@sha256",
-                "version": "07894526a4b49c61c5333e4f48190e830ce5124f0c18e1042cc15fcb594bfc37"
+                "version": "e9503135b4b46a3700d91bdb32df60923575aaedbcc5192bdc3e41b64591ee50"
             },
             {
-                "name": "gcr.io/knative-releases/controller-17550e04ebf9af897aa4b799ad074e13@sha256",
-                "version": "641c03911641bc86fc1b70db14e55caaa6a42c83fcc4f7cc9da50622afd6566e"
+                "name": "gcr.io/knative-releases/knative.dev/serving/cmd/domain-mapping@sha256",
+                "version": "fafa1afcc9f2c6e79b096ffbc67e14ff3f34e3591d887335811ca15970b3b837"
             },
             {
-                "name": "gcr.io/knative-releases/mtping-26ac4e6a49a610ffaac30cc0a8ab693a@sha256",
-                "version": "14c4da0990f2d6a27d62fe5c1d336d2663b034fa98835c672126afd719a1b03c"
+                "name": "gcr.io/knative-releases/knative.dev/serving/cmd/domain-mapping-webhook@sha256",
+                "version": "1335e57427a372d15e8a90a3370eaa6896c9cb3fd7cb6f2a63021cceaea2e8e6"
             },
             {
-                "name": "gcr.io/knative-releases/webhook-f31b5fdf3b3cdeb5a25aa0a5d79e4348@sha256",
-                "version": "eb480afef446b9f0b016cf82d88553c9a0adb4dde39505ca3d2e5830e79399e4"
+                "name": "gcr.io/knative-releases/knative.dev/serving/cmd/queue@sha256",
+                "version": "6c6fdac40d3ea53e39ddd6bb00aed8788e69e7fac99e19c98ed911dd1d2f946b"
+            }
+        ]
+    },
+    "knative-eventing": {
+        "gitRepoTag": "v0.24.1",
+        "containers": [{
+                "name": "gcr.io/knative-releases/knative.dev/eventing/cmd/controller@sha256",
+                "version": "3ded851d9b99c195245be075b89b5401f70b928397742f97ee4c4280fb5585e9"
+            },
+            {
+                "name": "gcr.io/knative-releases/knative.dev/eventing/cmd/mtping@sha256",
+                "version": "539b11fc9225aaba89ddf6f68e93adc32fcca2389bdd71ea2e61f9d81313eeb3"
+            },
+            {
+                "name": "gcr.io/knative-releases/knative.dev/eventing/cmd/webhook@sha256",
+                "version": "7361c9274611dd9ac304165ea246e30057546d0305f721bca7636bb71cf19d56"
+            },
+            {
+                "name": "gcr.io/knative-releases/knative.dev/eventing/cmd/apiserver_receive_adapter@sha256",
+                "version": "b4ef2b0745224052c089bfd89174609e67a73c3a2687d8b0fc3305582d53e150"
+            }
+        ]
+    },
+    "knative-contour": {
+        "gitRepoTag": "v0.24.0",
+        "containers": [{
+                "name": "gcr.io/knative-releases/github.com/projectcontour/contour/cmd/contour@sha256",
+                "version": "b71fd68e27d39da4cbecf01118531bdd96abbb1faad2f0914f42ba8c89d3799a"
+            },
+            {
+                "name": "envoyproxy/envoy",
+                "version": "v1.17.1"
+            },
+            {
+                "name": "gcr.io/knative-releases/knative.dev/net-contour/cmd/controller@sha256",
+                "version": "d1da0ae7c629e42ad0d92ad92da3458e75a8216a787cb1e330525f5a6e88968e"
             }
         ]
     },
@@ -133,30 +157,58 @@
         ]
     },
     "rabbitmq-operator": {
-        "gitRepoTag": "v1.4.0",
+        "gitRepoTag": "v1.6.0",
         "containers": [{
                 "name": "rabbitmqoperator/cluster-operator",
-                "version": "1.4.0"
+                "version": "1.6.0"
             },
             {
                 "name": "rabbitmq",
-                "version": "3.8.9-management"
+                "version": "3.8.14-management"
             }
         ]
     },
     "rabbitmq-broker": {
-        "gitRepoTag": "v0.20.0",
+        "gitRepoTag": "v0.24.0",
         "containers": [{
                 "name": "gcr.io/knative-releases/knative.dev/eventing-rabbitmq/cmd/controller/broker@sha256",
-                "version": "11863db6feeada9b34d63c8ef890349f35c4e6c03728462127431c96130c740b"
+                "version": "1eca73aae93f2d31d5855e93e5624a1e7318ec84e280a1ca80d0ffe807b1f30b"
             },
             {
                 "name": "gcr.io/knative-releases/knative.dev/eventing-rabbitmq/cmd/ingress@sha256",
-                "version": "94232a856453d0761bf0ffd1fb13cb2a957591fabac8821c1be796098acc6d62"
+                "version": "d6ca30d24de664ee72eeac9186d661b65707382d83dc8b0dfa3434aeef90370e"
             },
             {
                 "name": "gcr.io/knative-releases/knative.dev/eventing-rabbitmq/cmd/dispatcher@sha256",
-                "version": "2f99ca7c62a68c213d17c23c17ec92e3b4815cec982631c3050d9ccee38fabcb"
+                "version": "9e495a25eafec35f51172975beeed82d37e1dcec04e3c832f68d99bb76dc920a"
+            },
+            {
+                "name": "gcr.io/knative-releases/knative.dev/eventing-rabbitmq/cmd/webhook/broker@sha256",
+                "version": "6100d7ac1d675cd9a2002391910ffbd52beb1ad555eca562af8842d10e83347a"
+            }
+        ]
+    },
+    "rabbitmq-messaging-topology-operator": {
+        "gitRepoTag": "v0.8.0",
+        "containers": [{
+                "name": "rabbitmqoperator/messaging-topology-operator",
+                "version": "0.8.0"
+            }
+        ]
+    },
+    "cert-manager": {
+        "gitRepoTag": "v1.2.0",
+        "containers": [{
+                "name": "quay.io/jetstack/cert-manager-cainjector",
+                "version": "v1.2.0"
+            },
+            {
+                "name": "quay.io/jetstack/cert-manager-controller",
+                "version": "v1.2.0"
+            },
+            {
+                "name": "quay.io/jetstack/cert-manager-webhook",
+                "version": "v1.2.0"
             }
         ]
     },
