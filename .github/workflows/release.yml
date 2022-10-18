@@ -85,7 +85,7 @@ jobs:
 
       - name: Create Pull Request
         id: cpr
-        uses: peter-evans/create-pull-request@923ad837f191474af6b1721408744feb989a4c27
+        uses: peter-evans/create-pull-request@ad43dccb4d726ca8514126628bec209b8354b6dd
         with:
           delete-branch: true
           reviewers: embano1
